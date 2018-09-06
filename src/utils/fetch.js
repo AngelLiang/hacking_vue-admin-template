@@ -1,3 +1,9 @@
+/**
+ * 在编写 SPA 应用中，我们通常会把和后端做数据交互的方法封装成一个 Service 模块，
+ * 供不同的组件进行使用。我们可以新建一个文件夹 api，将 Service 模块集中起来，并按资源
+ * 进行分类。
+ */
+
 import axios from 'axios'
 import { Message } from 'element-ui'
 import store from '../store'
@@ -8,6 +14,12 @@ const service = axios.create({
   baseURL: process.env.BASE_API, // api的base_url
   timeout: 15000                  // 请求超时时间
 })
+
+/**
+ * 拦截器主要作用于给请求添加全局功能，例如身份验证、错误处理等，在请求发送给服
+ * 务器之前或服务器返回时对 request/response 进行拦截修改，完成业务逻辑后再传递给下一
+ * 步骤。 
+ */
 
 // request拦截器
 service.interceptors.request.use(config => {
