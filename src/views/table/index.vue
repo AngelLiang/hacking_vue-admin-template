@@ -33,6 +33,7 @@
 </template>
 
 <script>
+// api
 import { getList } from '@/api/table'
 
 export default {
@@ -42,7 +43,7 @@ export default {
       listLoading: true
     }
   },
-  // 创建时
+  // 创建时就获取数据
   created() {
     this.fetchData()
   },
