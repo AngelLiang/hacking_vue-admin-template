@@ -45,7 +45,9 @@ vue-element-admin文档：https://panjiachen.github.io/vue-element-admin-site/zh
 - `src/router`：路由；
 - `src/store`：全局存储管理，主要是把用户信息，token和权限存储cookie；
 - `src/utils/fetch.js`：有request和response拦截器，二次开发时需要修改；
-- `src/views`：views，在这里开发页面。
+- `src/views`：views，在这里开发页面；
+- `src/App.vue`：整个应用的根组件。
 
 src 目录里面就是我们主要的前端开发文件，由于脚手架采用了 vue-loader，就可以把组件抽象成一个 .vue 文件，并把所需的样式和 DOM 结构都放在一起。
+
 

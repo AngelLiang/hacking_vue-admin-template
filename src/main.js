@@ -15,8 +15,8 @@ Vue.config.productionTip = false
 
 new Vue({
   el: '#app',
-  router,
-  store,
+  router,   // 引入路由
+  store,    // 引入store对象
   template: '<App/>',
   components: { App }
 })
