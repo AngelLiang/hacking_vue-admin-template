@@ -42,12 +42,15 @@ export default {
       listLoading: true
     }
   },
+  // 创建时
   created() {
     this.fetchData()
   },
   methods: {
+    // 获取数据
     fetchData() {
       this.listLoading = true
+      // 调用api的方法，并设置回调函数
       getList(this.listQuery).then(response => {
         this.list = response.data.items
         this.listLoading = false

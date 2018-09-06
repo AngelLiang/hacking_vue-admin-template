@@ -47,11 +47,14 @@ export default {
         callback()
       }
     }
+    // data() 返回的数据
     return {
+      // 登录表单默认值
       loginForm: {
         username: 'admin',
         password: '111111'
       },
+      // 登录规则
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
         password: [{ required: true, trigger: 'blur', validator: validatePass }]
@@ -60,13 +63,14 @@ export default {
     }
   },
   methods: {
+    // 登录处理
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
           this.$store.dispatch('Login', this.loginForm).then(() => {
             this.loading = false
-            this.$router.push({ path: '/' })
+            this.$router.push({ path: '/' })  // 跳转到主页
           }).catch(() => {
             this.loading = false
           })
