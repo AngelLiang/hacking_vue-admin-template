@@ -1,3 +1,6 @@
+/*
+ * 参考资料：https://vuex.vuejs.org/zh/guide/getters.html
+ */
 const getters = {
   sidebar: state => state.app.sidebar,
   token: state => state.user.token,
