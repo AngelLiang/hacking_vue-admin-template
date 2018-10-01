@@ -50,4 +50,33 @@ vue-element-admin文档：https://panjiachen.github.io/vue-element-admin-site/zh
 
 src 目录里面就是我们主要的前端开发文件，由于脚手架采用了 vue-loader，就可以把组件抽象成一个 .vue 文件，并把所需的样式和 DOM 结构都放在一起。
 
+### `views/layout/Layout.vue`说明
 
+`Layout.vue`所依赖的组件：
+
+- `AppMain`
+- `Navbar`
+    - `Levelbar`
+    - `Hamburger`
+- `Sidebar`
+    - `SidebarItem`
+
+Layout会给Router调用进行布局：
+
+```js
+/* layout */
+import Layout from '../views/layout/Layout'
+
+export const constantRouterMap = [
+  { path: '/login', component: Login, hidden: true },
+  { path: '/404', component: Err404, hidden: true },
+  {
+    path: '/',
+    component: Layout,  // 这里
+    redirect: '/dashboard',
+    name: 'Home',
+    hidden: true,
+    children: [{ path: 'dashboard', component: dashboard }]
+  }
+]
+```

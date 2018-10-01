@@ -59,6 +59,7 @@ service.interceptors.response.use(
           })
         })
       }
+      // 非 20000 则返回 Promise.reject('error')
       return Promise.reject('error')
     } else {
       return response.data
@@ -71,6 +72,7 @@ service.interceptors.response.use(
       type: 'error',
       duration: 5 * 1000
     })
+    // 其他错误也返回 Promise.reject('error') 
     return Promise.reject(error)
   }
 )

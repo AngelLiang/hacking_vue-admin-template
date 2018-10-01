@@ -41,6 +41,7 @@ export const constantRouterMap = [
   }
 ]
 
+// 创建Router对象
 export default new Router({
   // mode: 'history', //后端支持可开
   scrollBehavior: () => ({ y: 0 }),
@@ -59,6 +60,7 @@ export const asyncRouterMap = [
     ]
   },
 
+  // table
   {
     path: '/table',
     component: Layout,
@@ -68,5 +70,6 @@ export const asyncRouterMap = [
     children: [{ path: 'index', component: Table, name: 'Table', meta: { role: ['admin'] }}]
   },
 
+  // 404
   { path: '*', redirect: '/404', hidden: true }
 ]
