@@ -56,7 +56,7 @@ const permission = {
         resolve()
       })
     }
-  }
+  } // actions
 }
 
 export default permission
