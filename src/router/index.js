@@ -7,7 +7,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 /* Layout */
-import Layout from '../views/layout/Layout'
+import Layout from '../modules/layout/Layout'
 
 /**
 * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
@@ -22,8 +22,16 @@ import Layout from '../views/layout/Layout'
   }
 **/
 export const constantRouterMap = [
-  { path: '/login', component: () => import('@/views/login/index'), hidden: true },
-  { path: '/404', component: () => import('@/views/404'), hidden: true },
+  {
+    path: '/login',
+    component: () => import('@/modules/auth/login'),
+    hidden: true
+  },
+  {
+    path: '/404',
+    component: () => import('@/modules/errors/404'),
+    hidden: true
+  },
 
   {
     path: '/',
@@ -31,10 +39,28 @@ export const constantRouterMap = [
     redirect: '/dashboard',
     name: 'Dashboard',
     hidden: true,
-    children: [{
-      path: 'dashboard',
-      component: () => import('@/views/dashboard/index')
-    }]
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/modules/dashboard/index')
+      }
+    ]
+  },
+
+  {
+    path: '/users',
+    component: Layout,
+    // redirect: '/example/table',
+    name: 'User',
+    meta: { title: 'User', icon: 'user' },
+    children: [
+      {
+        path: 'table',
+        name: 'User',
+        component: () => import('@/modules/users/index'),
+        meta: { title: 'User', icon: 'user' }
+      }
+    ]
   },
 
   {
@@ -47,13 +73,13 @@ export const constantRouterMap = [
       {
         path: 'table',
         name: 'Table',
-        component: () => import('@/views/table/index'),
+        component: () => import('@/modules/table/index'),
         meta: { title: 'Table', icon: 'table' }
       },
       {
         path: 'tree',
         name: 'Tree',
-        component: () => import('@/views/tree/index'),
+        component: () => import('@/modules/tree/index'),
         meta: { title: 'Tree', icon: 'tree' }
       }
     ]
@@ -66,7 +92,7 @@ export const constantRouterMap = [
       {
         path: 'index',
         name: 'Form',
-        component: () => import('@/views/form/index'),
+        component: () => import('@/modules/form/index'),
         meta: { title: 'Form', icon: 'form' }
       }
     ]
@@ -84,31 +110,33 @@ export const constantRouterMap = [
     children: [
       {
         path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
+        component: () => import('@/modules/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
         meta: { title: 'menu1' },
         children: [
           {
             path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
+            component: () => import('@/modules/nested/menu1/menu1-1'),
             name: 'Menu1-1',
             meta: { title: 'menu1-1' }
           },
           {
             path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
+            component: () => import('@/modules/nested/menu1/menu1-2'),
             name: 'Menu1-2',
             meta: { title: 'menu1-2' },
             children: [
               {
                 path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
+                component: () =>
+                  import('@/modules/nested/menu1/menu1-2/menu1-2-1'),
                 name: 'Menu1-2-1',
                 meta: { title: 'menu1-2-1' }
               },
               {
                 path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+                component: () =>
+                  import('@/modules/nested/menu1/menu1-2/menu1-2-2'),
                 name: 'Menu1-2-2',
                 meta: { title: 'menu1-2-2' }
               }
@@ -116,7 +144,7 @@ export const constantRouterMap = [
           },
           {
             path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
+            component: () => import('@/modules/nested/menu1/menu1-3'),
             name: 'Menu1-3',
             meta: { title: 'menu1-3' }
           }
@@ -124,7 +152,7 @@ export const constantRouterMap = [
       },
       {
         path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
+        component: () => import('@/modules/nested/menu2/index'),
         meta: { title: 'menu2' }
       }
     ]
