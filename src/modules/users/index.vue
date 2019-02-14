@@ -1,37 +1,47 @@
 <template>
   <div class="app-container">
-    <el-table v-loading="listLoading" :data="list" element-loading-text="Loading" border fit highlight-current-row>
-      <el-table-column align="center" label="ID" width="95">
-        <template slot-scope="scope">
-          {{ scope.$index }}
-        </template>
-      </el-table-column>
-      <el-table-column :label="$t('users.username')">
-        <template slot-scope="scope">
-          {{ scope.row.username }}
-        </template>
-      </el-table-column>
-      <el-table-column :label="$t('users.email')" min-width="110" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.author }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column :label="$t('users.isActive')" min-width="110" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.isActive }}
-        </template>
-      </el-table-column>
-      <el-table-column :label="$t('users.createDatetime')" align="center" prop="createDatetime" min-width="200">
-        <template slot-scope=" scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.createDatetime }}</span>
-        </template>
-      </el-table-column>
-    </el-table>
+    <el-container>
+      <el-header>
+        header
+      </el-header>
 
-    <div class="pagination-container">
-      <el-pagination :current-page="listQuery.page" :page-sizes="[10,20,30,50]" :page-size="listQuery.number" :total="listPagination.total" background layout="total, sizes, prev, pager, next, jumper" @size-change="onSizeChange" @current-change="onCurrentChange" />
-    </div>
+      <el-main>
+        <el-table v-loading="listLoading" :data="list" element-loading-text="Loading" border fit highlight-current-row>
+          <el-table-column align="center" label="ID" width="95">
+            <template slot-scope="scope">
+              {{ scope.$index }}
+            </template>
+          </el-table-column>
+          <el-table-column :label="$t('users.username')">
+            <template slot-scope="scope">
+              {{ scope.row.username }}
+            </template>
+          </el-table-column>
+          <el-table-column :label="$t('users.email')" min-width="110" align="center">
+            <template slot-scope="scope">
+              <span>{{ scope.row.email }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column :label="$t('users.isActive')" min-width="110" align="center">
+            <template slot-scope="scope">
+              {{ scope.row.isActive }}
+            </template>
+          </el-table-column>
+          <el-table-column :label="$t('users.createDatetime')" align="center" prop="createDatetime" min-width="200">
+            <template slot-scope=" scope">
+              <i class="el-icon-time" />
+              <span>{{ scope.row.createDatetime }}</span>
+            </template>
+          </el-table-column>
+        </el-table>
+
+        <div class="pagination-container">
+          <el-pagination :current-page="listQuery.page" :page-sizes="[10,20,30,50]" :page-size="listQuery.number" :total="listPagination.total" background layout="total, sizes, prev, pager, next, jumper" @size-change="onSizeChange" @current-change="onCurrentChange" />
+        </div>
+
+      </el-main>
+    </el-container>
+
   </div>
 </template>
 
