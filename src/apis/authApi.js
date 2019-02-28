@@ -1,10 +1,10 @@
 import request from '@/utils/request'
 
 const authApi = {
+  pathUrl: '/user',
   login(username, password) {
     return request({
-      url: '/user/login',
-      // url: '/users/token',
+      url: this.pathUrl + '/login',
       method: 'post',
       data: {
         username,
@@ -15,8 +15,8 @@ const authApi = {
 
   logout() {
     return request({
-      url: '/users/token',
-      method: 'delete'
+      url: this.pathUrl + '/logout',
+      method: 'post'
     })
   }
 }

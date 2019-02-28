@@ -27,11 +27,6 @@ export const constantRouterMap = [
     component: () => import('@/views/auth/login'),
     hidden: true
   },
-  {
-    path: '/404',
-    component: () => import('@/views/errors/404'),
-    hidden: true
-  },
 
   {
     path: '/',
@@ -43,22 +38,6 @@ export const constantRouterMap = [
       {
         path: 'dashboard',
         component: () => import('@/views/dashboard/index')
-      }
-    ]
-  },
-
-  {
-    path: '/users',
-    component: Layout,
-    // redirect: '/example/table',
-    name: 'User',
-    meta: { title: 'User', icon: 'user' },
-    children: [
-      {
-        path: 'table',
-        name: 'User',
-        component: () => import('@/views/users/index'),
-        meta: { title: 'User', icon: 'user' }
       }
     ]
   },
@@ -85,18 +64,6 @@ export const constantRouterMap = [
     ]
   },
 
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
-      }
-    ]
-  },
 
   {
     path: '/nested',
@@ -156,8 +123,33 @@ export const constantRouterMap = [
         meta: { title: 'menu2' }
       }
     ]
+  }
+
+]
+
+export const asyncRouterMap = [
+  {
+    path: '/users',
+    component: Layout,
+    redirect: '/users/table',
+    name: 'User',
+    meta: { title: 'user', icon: 'user', roles: ['admin'] },
+    children: [
+      {
+        path: '/users/table',
+        name: 'usersTable',
+        component: () => import('@/views/users/index'),
+        meta: { title: 'user', icon: 'user' }
+      }
+    ]
   },
 
+  // 根据权限动态加载页面，需要把这下面语句放在最后面
+  {
+    path: '/404',
+    component: () => import('@/views/errors/404'),
+    hidden: true
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]
 
