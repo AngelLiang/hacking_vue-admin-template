@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { getList } from './apis'
+import { getList } from '@/apis/apis'
 
 export default {
   filters: {

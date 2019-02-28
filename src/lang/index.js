@@ -4,17 +4,14 @@ import Cookies from 'js-cookie'
 // import elementEnLocale from 'element-ui/lib/locale/lang/en' // element-ui lang
 import elementZhLocale from 'element-ui/lib/locale/lang/zh-CN' // element-ui lang
 // import enLocale from './en'
-// import zhLocale from './zh'
-
-import zhUsers from '@/modules/users/zh'
+import zhLocale from './zh'
 
 Vue.use(VueI18n)
 
 const messages = {
   zh: {
-    // ...zhLocale,
-    ...elementZhLocale,
-    ...zhUsers
+    ...zhLocale,
+    ...elementZhLocale
   }
 }
 

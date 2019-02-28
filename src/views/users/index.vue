@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import usersApi from '@/modules/users/apis'
+import usersApi from '@/apis/usersApi'
 
 export default {
   filters: {

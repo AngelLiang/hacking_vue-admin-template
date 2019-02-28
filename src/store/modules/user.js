@@ -1,5 +1,5 @@
-import authApi from '@/modules/auth/apis'
-import usersApi from '@/modules/users/apis'
+import authApi from '@/apis/authApi'
+import usersApi from '@/apis/usersApi'
 
 import { getToken, setToken, removeToken } from '@/utils/auth'
 

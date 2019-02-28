@@ -43,7 +43,6 @@ const usersApi = {
   },
 
   getInfo(token) {
-    console.log(token)
     return request({
       // url: this.pathUrl + '/info,
       url: '/user/info',
