@@ -5,6 +5,7 @@
 const path = require('path')
 
 module.exports = {
+  // 开发配置
   dev: {
     // Paths
     assetsSubDirectory: 'static',
@@ -42,6 +43,7 @@ module.exports = {
     cssSourceMap: false
   },
 
+  // 构建配置
   build: {
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
