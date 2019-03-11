@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  @import "src/styles/mixin.scss";
+  @import "src/styles/mixin.scss";  // 改变了 package.json 目录是还需要修改这里
   .app-wrapper {
     @include clearfix;
     position: relative;
