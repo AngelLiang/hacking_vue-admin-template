@@ -18,7 +18,8 @@ const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
-  // 模式
+  // 通过选择 development, production 或 none 之中的一个，
+  // 来设置 mode 参数，你可以启用 webpack 内置在相应环境下的优化。其默认值为 production。
   // https://www.webpackjs.com/concepts/mode/
   mode: 'development',
   // 模块

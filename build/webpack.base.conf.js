@@ -27,7 +27,7 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
-  // 输出
+  // 输出：配置 output 选项可以控制 webpack 如何向硬盘写入编译文件。
   // https://www.webpackjs.com/concepts/output/
   output: {
     path: config.build.assetsRoot,
@@ -37,8 +37,14 @@ module.exports = {
         ? config.build.assetsPublicPath
         : config.dev.assetsPublicPath
   },
+  // resolve
+  // 配置模块如何解析。
+  // 例如，当在 ES2015 中调用 import 'lodash'，resolve 选项能够对 webpack 查找 'lodash' 的方式去做修改。
   resolve: {
+    // 自动解析确定的扩展。
     extensions: ['.js', '.vue', '.json'],
+    // resolve.alias
+    // 创建 import 或 require 的别名，来确保模块引入变得更简单。例如，一些位于 src/ 文件夹下的常用模块：
     alias: {
       '@': resolve('src')
     }
@@ -98,6 +104,8 @@ module.exports = {
     ]
   },
   // 插件
+  // 插件是 webpack 的支柱功能。webpack 自身也是构建于，你在 webpack 配置中用到的相同的插件系统之上！
+  // 插件目的在于解决 loader 无法实现的其他事。
   // https://www.webpackjs.com/concepts/plugins/
   plugins: [new VueLoaderPlugin()],
   node: {

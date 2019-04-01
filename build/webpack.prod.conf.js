@@ -32,6 +32,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     })
   },
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
+  // 打包输出
   // https://www.webpackjs.com/concepts/output/
   output: {
     // 目标输出目录 path 的绝对路径
