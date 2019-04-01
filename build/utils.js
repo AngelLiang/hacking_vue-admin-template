@@ -4,6 +4,7 @@ const config = require('../config')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const packageConfig = require('../package.json')
 
+// 静态资源路径
 exports.assetsPath = function(_path) {
   const assetsSubDirectory =
     process.env.NODE_ENV === 'production'

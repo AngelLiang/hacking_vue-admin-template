@@ -32,17 +32,22 @@ const webpackConfig = merge(baseWebpackConfig, {
     })
   },
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
+  // https://www.webpackjs.com/concepts/output/
   output: {
+    // 目标输出目录 path 的绝对路径
     path: config.build.assetsRoot,
+    // filename 用于输出文件的文件名
     filename: utils.assetsPath('js/[name].[chunkhash:8].js'),
     chunkFilename: utils.assetsPath('js/[name].[chunkhash:8].js')
   },
+  // https://webpack.js.org/concepts/plugins
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
     }),
     // extract css into its own file
+    // https://www.npmjs.com/package/mini-css-extract-plugin
     new MiniCssExtractPlugin({
       filename: utils.assetsPath('css/[name].[contenthash:8].css'),
       chunkFilename: utils.assetsPath('css/[name].[contenthash:8].css')
@@ -68,7 +73,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       // matter anyway
     }),
     new ScriptExtHtmlWebpackPlugin({
-      //`runtime` must same as runtimeChunk name. default is `runtime`
+      // `runtime` must same as runtimeChunk name. default is `runtime`
       inline: /runtime\..*\.js$/
     }),
     // keep chunk.id stable when chunk has no name
@@ -91,6 +96,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // keep module.id stable when vender modules does not change
     new webpack.HashedModuleIdsPlugin(),
     // copy custom static assets
+    // https://www.webpackjs.com/plugins/copy-webpack-plugin/
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),

@@ -22,9 +22,13 @@ const createLintingRule = () => ({
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
+  // 入口起点
+  // https://www.webpackjs.com/concepts/entry-points/
   entry: {
     app: './src/main.js'
   },
+  // 输出
+  // https://www.webpackjs.com/concepts/output/
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -39,6 +43,8 @@ module.exports = {
       '@': resolve('src')
     }
   },
+  // 模块
+  // https://www.webpackjs.com/concepts/modules/
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
@@ -91,6 +97,8 @@ module.exports = {
       }
     ]
   },
+  // 插件
+  // https://www.webpackjs.com/concepts/plugins/
   plugins: [new VueLoaderPlugin()],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue

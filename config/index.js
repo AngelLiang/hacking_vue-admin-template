@@ -48,7 +48,7 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'static',
+    assetsSubDirectory: 'static', // 静态资源文件子文件夹
 
     /**
      * You can set by youself according to actual condition
