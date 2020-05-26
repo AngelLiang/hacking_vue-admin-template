@@ -20,6 +20,8 @@ service.interceptors.request.use(
       // ['X-Token'] is a custom headers key
       // please modify it according to the actual situation
       config.headers['X-Token'] = getToken()
+      // 根据情况进行修改
+      // config.headers['Authorization'] = 'Token ' + getToken()
     }
     return config
   },
@@ -35,7 +37,7 @@ service.interceptors.response.use(
   /**
    * If you want to get http information such as headers or status
    * Please return  response => response
-  */
+   */
 
   /**
    * Determine the request status by custom code
@@ -56,11 +58,15 @@ service.interceptors.response.use(
       // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
       if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
         // to re-login
-        MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
-          confirmButtonText: 'Re-Login',
-          cancelButtonText: 'Cancel',
-          type: 'warning'
-        }).then(() => {
+        MessageBox.confirm(
+          'You have been logged out, you can cancel to stay on this page, or log in again',
+          'Confirm logout',
+          {
+            confirmButtonText: 'Re-Login',
+            cancelButtonText: 'Cancel',
+            type: 'warning'
+          }
+        ).then(() => {
           store.dispatch('user/resetToken').then(() => {
             location.reload()
           })
