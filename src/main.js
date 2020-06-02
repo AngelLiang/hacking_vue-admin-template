@@ -15,8 +15,13 @@ Vue.config.productionTip = false
 
 new Vue({
   el: '#app',
-  router,   // 引入路由
-  store,    // 引入store对象
+
+  // 引入路由
+  router,   
+
+  // 引入store对象
+  // 为了在 Vue 组件中访问 this.$store property，你需要为 Vue 实例提供创建好的 store。
+  store,
   template: '<App/>',
   components: { App }
 })
